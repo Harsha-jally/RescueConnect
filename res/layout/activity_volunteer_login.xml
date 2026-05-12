@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ╔══════════════════════════════════════════════════════════════════╗
+  ║  RescueConnect · activity_volunteer_login.xml                    ║
+  ╚══════════════════════════════════════════════════════════════════╝
+-->
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#0A0E1A"
+    tools:context=".VolunteerLoginActivity">
+
+  <!-- Cyan glow top -->
+  <View
+      android:layout_width="280dp"
+      android:layout_height="280dp"
+      android:background="@drawable/bg_glow_circle_cyan"
+      android:alpha="0.15"
+      android:translationX="-60dp"
+      android:translationY="-60dp"
+      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintStart_toStartOf="parent"/>
+
+  <!-- Icon + Title group -->
+  <ImageView
+      android:id="@+id/loginIcon"
+      android:layout_width="64dp"
+      android:layout_height="64dp"
+      android:src="@drawable/ic_volunteer_badge"
+      android:contentDescription="Volunteer"
+      android:tint="#00D4FF"
+      android:layout_marginTop="72dp"
+      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"/>
+
+  <TextView
+      android:id="@+id/loginTitle"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="Volunteer Login"
+      android:textColor="#F1F5F9"
+      android:textSize="28sp"
+      android:fontFamily="@font/poppins_bold"
+      android:layout_marginTop="12dp"
+      app:layout_constraintTop_toBottomOf="@id/loginIcon"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"/>
+
+  <TextView
+      android:id="@+id/loginSub"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="Welcome back, hero"
+      android:textColor="#64748B"
+      android:textSize="14sp"
+      android:fontFamily="@font/poppins_regular"
+      android:layout_marginTop="4dp"
+      app:layout_constraintTop_toBottomOf="@id/loginTitle"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"/>
+
+  <!-- Form card -->
+  <androidx.cardview.widget.CardView
+      android:id="@+id/formCard"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="24dp"
+      android:layout_marginEnd="24dp"
+      android:layout_marginTop="32dp"
+      app:cardBackgroundColor="#111827"
+      app:cardCornerRadius="28dp"
+      app:cardElevation="20dp"
+      app:layout_constraintTop_toBottomOf="@id/loginSub"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintEnd_toEndOf="parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp">
+
+      <com.google.android.material.textfield.TextInputLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          style="@style/RC.TextInputLayout"
+          android:hint="Mobile Number"
+          app:startIconDrawable="@drawable/ic_phone"
+          app:startIconTint="#00D4FF"
+          android:layout_marginBottom="16dp">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/mobileEdit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="phone"
+            android:maxLength="10"
+            android:textColor="#F1F5F9"/>
+      </com.google.android.material.textfield.TextInputLayout>
+
+      <com.google.android.material.textfield.TextInputLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          style="@style/RC.TextInputLayout"
+          android:hint="Password"
+          app:startIconDrawable="@drawable/ic_lock"
+          app:startIconTint="#00D4FF"
+          app:endIconMode="password_toggle"
+          android:layout_marginBottom="28dp">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/passwordEdit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:textColor="#F1F5F9"/>
+      </com.google.android.material.textfield.TextInputLayout>
+
+      <com.google.android.material.button.MaterialButton
+          android:id="@+id/login"
+          android:layout_width="match_parent"
+          android:layout_height="56dp"
+          android:onClick="volunteerLoginImplementation"
+          android:text="Sign In"
+          android:textSize="16sp"
+          android:fontFamily="@font/poppins_semibold"
+          android:textColor="#001620"
+          app:backgroundTint="#00D4FF"
+          app:cornerRadius="16dp"
+          android:stateListAnimator="@null"/>
+
+      <TextView
+          android:id="@+id/signup"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:gravity="center"
+          android:text="New here? Create an account"
+          android:textColor="#64748B"
+          android:textSize="13sp"
+          android:fontFamily="@font/poppins_regular"
+          android:layout_marginTop="16dp"
+          android:onClick="volunteerSignupImplementation"/>
+
+    </LinearLayout>
+  </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

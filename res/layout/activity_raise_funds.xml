@@ -1,0 +1,349 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  RescueConnect · activity_raise_funds.xml
+  Form: patient name, disease, phone, UPI ID, bill upload, total amount
+-->
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#0A0E1A"
+    android:orientation="vertical">
+
+    <!-- ── Header ── -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_header_gradient_red"
+        android:orientation="vertical"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:paddingTop="44dp"
+        android:paddingBottom="20dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="🏥 Raise Health Funds"
+            android:textColor="#FFFFFF"
+            android:textSize="22sp"
+            android:fontFamily="@font/poppins_bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Fill the form · Admin will verify · Go live for donations"
+            android:textColor="#CCFFFFFF"
+            android:textSize="11sp"
+            android:fontFamily="@font/poppins_regular"
+            android:layout_marginTop="2dp"/>
+
+    </LinearLayout>
+
+    <!-- ── Scrollable form ── -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <!-- ══ FORM CARD ══ -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                app:cardBackgroundColor="#111827"
+                app:cardCornerRadius="24dp"
+                app:cardElevation="12dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="24dp">
+
+                    <!-- Patient Name -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Patient Full Name *"
+                        android:textColor="#94A3B8"
+                        android:textSize="12sp"
+                        android:fontFamily="@font/poppins_medium"
+                        android:layout_marginBottom="6dp"/>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="16dp"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        app:boxStrokeColor="#FF3B5C"
+                        app:hintTextColor="#64748B"
+                        app:boxBackgroundColor="#1E293B">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etPatientName"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Enter patient's full name"
+                            android:textColor="#F1F5F9"
+                            android:textColorHint="#64748B"
+                            android:inputType="textPersonName"
+                            android:fontFamily="@font/poppins_regular"/>
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <!-- Disease -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Disease / Medical Condition *"
+                        android:textColor="#94A3B8"
+                        android:textSize="12sp"
+                        android:fontFamily="@font/poppins_medium"
+                        android:layout_marginBottom="6dp"/>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="16dp"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        app:boxStrokeColor="#FF3B5C"
+                        app:hintTextColor="#64748B"
+                        app:boxBackgroundColor="#1E293B">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etDisease"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="e.g. Kidney Failure, Cancer, etc."
+                            android:textColor="#F1F5F9"
+                            android:textColorHint="#64748B"
+                            android:inputType="textCapSentences"
+                            android:fontFamily="@font/poppins_regular"/>
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <!-- Phone Number -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Contact Phone Number *"
+                        android:textColor="#94A3B8"
+                        android:textSize="12sp"
+                        android:fontFamily="@font/poppins_medium"
+                        android:layout_marginBottom="4dp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="📞 We may call you for verification"
+                        android:textColor="#F59E0B"
+                        android:textSize="11sp"
+                        android:fontFamily="@font/poppins_regular"
+                        android:layout_marginBottom="8dp"/>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="16dp"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        app:boxStrokeColor="#FF3B5C"
+                        app:hintTextColor="#64748B"
+                        app:boxBackgroundColor="#1E293B">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etPhone"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="+91 XXXXXXXXXX"
+                            android:textColor="#F1F5F9"
+                            android:textColorHint="#64748B"
+                            android:inputType="phone"
+                            android:maxLength="13"
+                            android:fontFamily="@font/poppins_regular"/>
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <!-- UPI ID -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="UPI ID (to receive donations) *"
+                        android:textColor="#94A3B8"
+                        android:textSize="12sp"
+                        android:fontFamily="@font/poppins_medium"
+                        android:layout_marginBottom="6dp"/>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="16dp"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        app:boxStrokeColor="#FF3B5C"
+                        app:hintTextColor="#64748B"
+                        app:boxBackgroundColor="#1E293B">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etUpiId"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="example@upi or phone@paytm"
+                            android:textColor="#F1F5F9"
+                            android:textColorHint="#64748B"
+                            android:inputType="textEmailAddress"
+                            android:fontFamily="@font/poppins_regular"/>
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <!-- Total Amount -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Total Amount Needed (₹) *"
+                        android:textColor="#94A3B8"
+                        android:textSize="12sp"
+                        android:fontFamily="@font/poppins_medium"
+                        android:layout_marginBottom="6dp"/>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="20dp"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        app:boxStrokeColor="#FF3B5C"
+                        app:hintTextColor="#64748B"
+                        app:boxBackgroundColor="#1E293B">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etTotalAmount"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="e.g. 150000"
+                            android:textColor="#F1F5F9"
+                            android:textColorHint="#64748B"
+                            android:inputType="numberDecimal"
+                            android:fontFamily="@font/poppins_regular"/>
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <!-- Bill Upload Section -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Hospital Bill / Documents"
+                        android:textColor="#94A3B8"
+                        android:textSize="12sp"
+                        android:fontFamily="@font/poppins_medium"
+                        android:layout_marginBottom="8dp"/>
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/cardUpload"
+                        android:layout_width="match_parent"
+                        android:layout_height="90dp"
+                        android:layout_marginBottom="8dp"
+                        app:cardBackgroundColor="#1E293B"
+                        app:cardCornerRadius="16dp"
+                        app:cardElevation="0dp"
+                        android:foreground="?attr/selectableItemBackground"
+                        android:clickable="true"
+                        android:focusable="true">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical"
+                            android:gravity="center">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="📎"
+                                android:textSize="28sp"/>
+
+                            <TextView
+                                android:id="@+id/tvUploadLabel"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Tap to upload hospital bill (PDF/Image)"
+                                android:textColor="#64748B"
+                                android:textSize="12sp"
+                                android:fontFamily="@font/poppins_regular"
+                                android:layout_marginTop="4dp"/>
+
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <!-- Selected file name -->
+                    <TextView
+                        android:id="@+id/tvFileName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:textColor="#00E676"
+                        android:textSize="12sp"
+                        android:fontFamily="@font/poppins_regular"
+                        android:layout_marginBottom="8dp"
+                        android:visibility="gone"/>
+
+                    <!-- Upload progress -->
+                    <ProgressBar
+                        android:id="@+id/uploadProgress"
+                        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="8dp"
+                        android:progressTint="#FF3B5C"
+                        android:max="100"
+                        android:progress="0"
+                        android:layout_marginBottom="16dp"
+                        android:visibility="gone"/>
+
+                    <!-- Disclaimer -->
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        app:cardBackgroundColor="#0D1F0D"
+                        app:cardCornerRadius="12dp"
+                        app:cardElevation="0dp">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="🔒 Your documents are secured and only reviewed by our admin team. False submissions are subject to legal action."
+                            android:textColor="#4ADE80"
+                            android:textSize="11sp"
+                            android:fontFamily="@font/poppins_regular"
+                            android:padding="12dp"
+                            android:lineSpacingExtra="3dp"/>
+
+                    </androidx.cardview.widget.CardView>
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- ── Submit button ── -->
+            <Button
+                android:id="@+id/btnSubmit"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:background="@drawable/bg_role_btn_user"
+                android:text="🚀  Submit for Verification"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp"
+                android:fontFamily="@font/poppins_semibold"
+                android:stateListAnimator="@null"
+                android:layout_marginBottom="32dp"/>
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

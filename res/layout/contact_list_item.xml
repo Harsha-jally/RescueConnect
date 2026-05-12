@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- contact_list_item.xml -->
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="12dp"
+    android:layout_marginEnd="12dp"
+    android:layout_marginBottom="8dp"
+    app:cardBackgroundColor="#111827"
+    app:cardCornerRadius="18dp"
+    app:cardElevation="6dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="16dp"
+        android:paddingEnd="12dp"
+        android:paddingTop="14dp"
+        android:paddingBottom="14dp">
+
+        <!-- Avatar circle -->
+        <View
+            android:id="@+id/avatarCircle"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:background="@drawable/bg_avatar_circle_cyan"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"/>
+
+        <TextView
+            android:id="@+id/avatarLetter"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:gravity="center"
+            android:text="?"
+            android:textColor="#00D4FF"
+            android:textSize="18sp"
+            android:fontFamily="@font/poppins_bold"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"/>
+
+        <!-- Contact name -->
+        <TextView
+            android:id="@+id/contactName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/avatarCircle"
+            android:layout_toStartOf="@+id/btnEdit"
+            android:layout_marginStart="14dp"
+            android:layout_marginTop="4dp"
+            android:textColor="#F1F5F9"
+            android:textSize="15sp"
+            android:fontFamily="@font/poppins_semibold"/>
+
+        <!-- Phone number -->
+        <TextView
+            android:id="@+id/contactPhone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/contactName"
+            android:layout_toEndOf="@+id/avatarCircle"
+            android:layout_toStartOf="@+id/btnEdit"
+            android:layout_marginStart="14dp"
+            android:layout_marginTop="2dp"
+            android:textColor="#64748B"
+            android:textSize="13sp"
+            android:fontFamily="@font/poppins_regular"/>
+
+        <!-- Delete button -->
+        <ImageButton
+            android:id="@+id/btnDelete"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/bg_icon_btn_danger"
+            android:src="@android:drawable/ic_menu_delete"
+            android:contentDescription="Delete"
+            android:padding="8dp"
+            app:tint="#FF6B6B"/>
+
+        <!-- Edit button -->
+        <ImageButton
+            android:id="@+id/btnEdit"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_toStartOf="@+id/btnDelete"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/bg_icon_btn"
+            android:src="@android:drawable/ic_menu_edit"
+            android:contentDescription="Edit"
+            android:padding="8dp"
+            app:tint="#00D4FF"/>
+
+    </RelativeLayout>
+</androidx.cardview.widget.CardView>

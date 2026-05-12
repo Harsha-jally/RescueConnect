@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- res/drawable/bg_role_btn_blood.xml
+     Red gradient button background for Blood Donation feature -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+
+    <gradient
+        android:startColor="#E53935"
+        android:endColor="#B71C1C"
+        android:angle="135"
+        android:type="linear" />
+
+    <corners android:radius="20dp" />
+
+</shape>

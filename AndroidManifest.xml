@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Location -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
+    <!-- Network -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <!-- Contacts -->
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+
+    <!-- SMS & Calling -->
+    <uses-permission android:name="android.permission.SEND_SMS" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+    <!-- Pushy — REQUIRED for background push delivery -->
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+
+    <!-- Android 13+ — REQUIRED to show notifications, without this no notification appears -->
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
+
+    <!-- Pushy socket service needs this to stay alive in background on some OEMs -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_LOCATION" />
+    <!-- Required hardware feature tags -->
+    <uses-feature android:name="android.hardware.telephony" android:required="false" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-feature android:name="android.hardware.camera" android:required="false" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_HEALTH" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+
+
+    <!-- dataSync type — used by both EmergencyDetectionService and MonitorMeService -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_DATA_SYNC" />
+
+    <!-- Required for high-rate accelerometer (SENSOR_DELAY_GAME) on Android 12+ -->
+    <uses-permission android:name="android.permission.HIGH_SAMPLING_RATE_SENSORS" />
+
+    <!-- Microphone for scream/panic detection -->
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+
+    <!-- POST_NOTIFICATIONS is required at runtime on Android 13+ (API 33+).
+         You must also call ActivityCompat.requestPermissions() for this in your
+         onboarding flow or in HomeActivity.onCreate(). -->
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_emergency"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.RescueConnect"
+        android:networkSecurityConfig="@xml/network_security_config">
+
+        <!-- ── Activities ──────────────────────────────────────────────────── -->
+        <activity android:name=".DonationsActivity"        android:exported="false" />
+        <activity android:name=".RaiseFundsActivity"       android:exported="false" />
+        <activity android:name=".DonateActivity"           android:exported="false" />
+        <activity android:name=".VolunteerHomeActivity"    android:exported="false" />
+        <activity android:name=".VolunteerLoginActivity"   android:exported="false" />
+        <activity android:name=".VolunteerRegisterActivity" android:exported="false" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".RegisterActivity"         android:exported="false" />
+        <activity android:name=".HomeActivity"             android:exported="false" />
+        <activity android:name=".AddContactsActivity"      android:exported="false" />
+        <activity android:name=".ViewContactsActivity"     android:exported="false" />
+        <activity android:name=".SettingsActivity"         android:exported="false" />
+        <activity android:name=".AdminLoginActivity"       android:exported="false" />
+        <activity android:name=".AdminDashboardActivity"   android:exported="false" />
+        <activity android:name=".ContributionActivity"     android:exported="false" />
+        <activity android:name=".BloodDonationActivity"    android:exported="false" />
+        <activity
+            android:name=".BloodSearchResultsActivity"
+            android:theme="@style/Theme.RescueConnect" />
+        <activity android:name=".SafetySettingsActivity" android:exported="false" />
+
+        <!-- Live volunteer tracking map — opened from HomeActivity banner + push notification -->
+        <activity
+            android:name=".TrackVolunteerActivity"
+            android:exported="false"
+            android:label="Track Volunteer" />
+
+        <!-- ── Your existing broadcast receiver ───────────────────────────── -->
+        <receiver
+            android:name=".MyReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MEDIA_BUTTON" />
+                <action android:name="android.intent.action.SCREEN_OFF" />
+                <action android:name="android.intent.action.SCREEN_ON" />
+                <action android:name="android.intent.action.ACTION_POWER_CONNECTED" />
+                <action android:name="android.intent.action.ACTION_POWER_DISCONNECTED" />
+                <action android:name="android.intent.action.ACTION_SHUTDOWN" />
+            </intent-filter>
+        </receiver>
+
+        <!-- ── PushyReceiver — receives SOS push notifications ────────────── -->
+        <!--
+            IMPORTANT: exported="false" is correct here.
+            Pushy delivers via internal broadcast, not external intent.
+            Do NOT set exported="true" — that would be a security hole.
+        -->
+        <receiver
+            android:name=".PushyReceiver"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="pushy.me"/>
+            </intent-filter>
+        </receiver>
+
+        <!-- ── Pushy SDK services ──────────────────────────────────────────── -->
+
+        <!--
+            stopWithTask="false" is CRITICAL.
+            Without it, the persistent socket connection is killed when the user
+            swipes away the app, and no more pushes are received until relaunch.
+        -->
+        <service
+            android:name="me.pushy.sdk.services.PushySocketService"
+            android:stopWithTask="false"/>
+
+        <!--
+            PushyJobService handles push delivery when the socket service is not running.
+            Requires BIND_JOB_SERVICE permission.
+        -->
+        <service
+            android:name="me.pushy.sdk.services.PushyJobService"
+            android:permission="android.permission.BIND_JOB_SERVICE"
+            android:stopWithTask="true"/>
+
+        <!-- Restart Pushy after app update -->
+        <receiver
+            android:name="me.pushy.sdk.receivers.PushyUpdateReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MY_PACKAGE_REPLACED"/>
+            </intent-filter>
+        </receiver>
+
+        <!-- Restart Pushy after device reboot -->
+        <receiver
+            android:name="me.pushy.sdk.receivers.PushyBootReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+            </intent-filter>
+        </receiver>
+
+        <!--
+            VolunteerActionReceiver — handles "🚀 I Am Going" action button on the
+            emergency push notification. exported="false": only our own PendingIntent
+            (built in PushyReceiver) fires this — no external app can trigger it.
+        -->
+        <receiver
+            android:name=".VolunteerActionReceiver"
+            android:exported="false" />
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+        <!--
+            VolunteerLocationService — live GPS pump (writes lat/lon to Firestore every 5 s).
+            stopWithTask="false": CRITICAL — without it, swiping away the app mid-rescue
+            kills this service immediately and freezes the SOS user's tracking map.
+            foregroundServiceType="location": required on Android 10+ (API 29+), otherwise
+            requestLocationUpdates() throws a silent SecurityException.
+        -->
+        <service
+            android:name=".VolunteerLocationService"
+            android:foregroundServiceType="location"
+            android:stopWithTask="false"
+            android:exported="false" />
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyD1dokp0v_tJiETP5BPVa-gjogGIcNotfw" />
+
+        <receiver android:name=".BootReceiver" android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.QUICKBOOT_POWERON" />
+            </intent-filter>
+        </receiver>
+        <service
+            android:name=".EmergencyDetectionService"
+            android:foregroundServiceType="dataSync"
+            android:exported="false"
+            android:stopWithTask="false" />
+
+        <!--
+            MonitorMeService
+            Sends 5-minute check-in notifications and auto-SOS on no response.
+            Same foregroundServiceType fix as above.
+        -->
+        <service
+            android:name=".MonitorMeService"
+            android:foregroundServiceType="dataSync"
+            android:exported="false"
+            android:stopWithTask="false" />
+
+        <!--
+            MonitorMeReceiver
+            Handles the 3 action button taps inside the check-in notification
+            (Safe / Not Safe / Reached Destination) and forwards to MonitorMeService.
+        -->
+        <receiver
+            android:name=".MonitorMeReceiver"
+            android:exported="false" />
+
+        <!--
+            BootReceiver
+            Restarts EmergencyDetectionService automatically after device reboot.
+        -->
+        <receiver
+            android:name=".BootReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.QUICKBOOT_POWERON" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name=".MonitorMeReceiver"
+            android:exported="false" />
+    </application>
+
+</manifest>

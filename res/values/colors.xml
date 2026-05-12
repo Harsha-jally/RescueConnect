@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="rc_bg">#0A0E1A</color>
+    <color name="rc_surface">#111827</color>
+    <color name="rc_surface2">#1E293B</color>
+    <color name="rc_accent_red">#FF3B5C</color>
+    <color name="rc_accent_cyan">#00D4FF</color>
+    <color name="rc_accent_green">#00E676</color>
+    <color name="rc_text">#F1F5F9</color>
+    <color name="rc_text_muted">#64748B</color>
+    <color name="rc_danger">#FF6B6B</color>
+    <color name="white">#FFFFFF</color>
+    <!-- ADD these 2 lines inside <resources> -->
+    <color name="grey">#1E293B</color>
+    <color name="black">#0A0E1A</color>
+</resources>

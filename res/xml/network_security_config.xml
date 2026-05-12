@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  res/xml/network_security_config.xml
+
+  All 3 pincode/blood-bank APIs use HTTPS, so no cleartext exceptions are
+  needed for them. The only cleartext exception kept is for the India Post
+  API (api.postalpincode.in) in case it ever falls back to HTTP.
+
+  APIs used:
+    • https://api.postalpincode.in          – pincode → district  (India Post)
+    • https://nominatim.openstreetmap.org   – pincode → lat/lng   (OpenStreetMap)
+    • https://overpass-api.de               – lat/lng → blood banks (OpenStreetMap)
+-->
+<network-security-config>
+
+    <!-- Allow HTTP only for India Post pincode lookup (uses HTTP on some endpoints) -->
+    <domain-config cleartextTrafficPermitted="true">
+        <domain includeSubdomains="true">api.postalpincode.in</domain>
+    </domain-config>
+
+    <!-- Nominatim and Overpass are HTTPS-only — no special config needed,
+         but listing them here makes the intent explicit for code reviewers. -->
+    <domain-config cleartextTrafficPermitted="false">
+        <domain includeSubdomains="true">nominatim.openstreetmap.org</domain>
+        <domain includeSubdomains="true">overpass-api.de</domain>
+    </domain-config>
+
+    <!-- Everything else: HTTPS only (Android default) -->
+    <base-config cleartextTrafficPermitted="false">
+        <trust-anchors>
+            <certificates src="system" />
+        </trust-anchors>
+    </base-config>
+
+</network-security-config>

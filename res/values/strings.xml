@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name" translatable="false">RescueConnect</string>
+    <string name="register_name">Name</string>
+    <string name="register_mobile">Phone</string>
+    <string name="register_location">Location</string>
+    <string name="register_email">example@gmail.com</string>
+    <string name="register_password">Password</string>
+    <string name="register_cpassword">Confirm Password</string>
+    <string name="register_emergency">Enter emergency message</string>
+    <string name="register_button">Register</string>
+    <string name="login_button">Login</string>
+    <string name="register_message">Fields must not be empty</string>
+    <string name="home_help">SOS</string>
+    <string name="new_account">New here? Create an account</string>
+    <string name="home_add_people">Add People</string>
+    <string name="add_contact_edit">Get contact</string>
+    <string name="add_contact_enter_number">Enter Mobile number</string>
+    <string name="add_contact_submit">Submit</string>
+    <string name="home_view_people">View People</string>
+    <string name="change">Change Message</string>
+
+</resources>

@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- activity_contribution.xml -->
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#0A0E1A">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:paddingStart="24dp"
+        android:paddingEnd="24dp"
+        android:paddingTop="56dp"
+        android:paddingBottom="40dp">
+
+        <!-- Hero emoji + glow -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="🦸"
+            android:textSize="72sp"
+            android:layout_marginBottom="16dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="They Came For You!"
+            android:textColor="#F1F5F9"
+            android:textSize="26sp"
+            android:fontFamily="@font/poppins_bold"
+            android:gravity="center"
+            android:layout_marginBottom="8dp"/>
+
+        <TextView
+            android:id="@+id/volunteerNameText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textColor="#00D4FF"
+            android:textSize="16sp"
+            android:fontFamily="@font/poppins_semibold"
+            android:layout_marginBottom="16dp"/>
+
+        <!-- Message card -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="28dp"
+            app:cardBackgroundColor="#111827"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="8dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Would you like to support RescueConnect?\n\nYour contribution keeps this service running for everyone. This is completely optional."
+                android:textColor="#94A3B8"
+                android:textSize="14sp"
+                android:fontFamily="@font/poppins_regular"
+                android:padding="20dp"
+                android:lineSpacingMultiplier="1.4"/>
+
+        </androidx.cardview.widget.CardView>
+
+        <!-- Section label -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="CHOOSE AMOUNT"
+            android:textColor="#64748B"
+            android:textSize="11sp"
+            android:letterSpacing="0.12"
+            android:textAllCaps="true"
+            android:fontFamily="@font/poppins_medium"
+            android:layout_marginBottom="12dp"/>
+
+        <!-- Quick amount chips -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginBottom="16dp">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/chip100"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_weight="1"
+                android:layout_marginEnd="6dp"
+                android:text="₹100"
+                android:textColor="#00D4FF"
+                android:textSize="14sp"
+                android:fontFamily="@font/poppins_semibold"
+                app:backgroundTint="#0D2A35"
+                app:strokeColor="#00D4FF"
+                app:strokeWidth="1.5dp"
+                app:cornerRadius="14dp"
+                android:stateListAnimator="@null"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/chip500"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_weight="1"
+                android:layout_marginEnd="6dp"
+                android:text="₹500"
+                android:textColor="#00D4FF"
+                android:textSize="14sp"
+                android:fontFamily="@font/poppins_semibold"
+                app:backgroundTint="#0D2A35"
+                app:strokeColor="#00D4FF"
+                app:strokeWidth="1.5dp"
+                app:cornerRadius="14dp"
+                android:stateListAnimator="@null"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/chip1000"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_weight="1"
+                android:text="₹1000"
+                android:textColor="#00D4FF"
+                android:textSize="14sp"
+                android:fontFamily="@font/poppins_semibold"
+                app:backgroundTint="#0D2A35"
+                app:strokeColor="#00D4FF"
+                app:strokeWidth="1.5dp"
+                app:cornerRadius="14dp"
+                android:stateListAnimator="@null"/>
+
+        </LinearLayout>
+
+        <!-- Custom amount -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="220dp"
+            android:layout_height="wrap_content"
+            style="@style/RC.TextInputLayout.Cyan"
+            android:hint="Custom amount (₹)"
+            android:layout_marginBottom="24dp">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/amountEdit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:inputType="numberDecimal"
+                android:textColor="#F1F5F9"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Pay CTA -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/payBtn"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:text="Pay Via Upi"
+            android:textSize="16sp"
+            android:fontFamily="@font/poppins_semibold"
+            android:textColor="#001620"
+            app:backgroundTint="#00D4FF"
+            app:cornerRadius="18dp"
+            android:layout_marginBottom="8dp"
+            android:stateListAnimator="@null"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="UPI · Cards · Netbanking · Wallets"
+            android:textColor="#3D4F63"
+            android:textSize="11sp"
+            android:fontFamily="@font/poppins_regular"
+            android:layout_marginBottom="24dp"/>
+
+        <!-- Skip -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/skipBtn"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:text="Skip for now"
+            android:textSize="14sp"
+            android:fontFamily="@font/poppins_medium"
+            android:textColor="#64748B"
+            app:backgroundTint="#111827"
+            app:strokeColor="#1E293B"
+            app:strokeWidth="1dp"
+            app:cornerRadius="16dp"
+            android:stateListAnimator="@null"/>
+
+    </LinearLayout>
+</ScrollView>

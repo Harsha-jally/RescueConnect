@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- ───────────────────────────────────────────────────────────────────────
+         Settings screen — radio button row
+         Used by SafetySettingsActivity radio groups.
+
+         Visual states:
+           Unselected  →  grey empty ring on right  |  grey text
+           Selected    →  blue filled circle + white tick on right  |  white text  |  blue-tinted row bg
+    ─────────────────────────────────────────────────────────────────────────── -->
+    <style name="SettingsRadioBtn" parent="Widget.AppCompat.CompoundButton.RadioButton">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">54dp</item>
+        <item name="android:paddingStart">20dp</item>
+        <item name="android:paddingEnd">20dp</item>
+        <!-- Text turns white when checked, grey when not -->
+        <item name="android:textColor">@drawable/rb_text_color_selector</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:fontFamily">@font/poppins_regular</item>
+        <item name="android:gravity">center_vertical</item>
+        <!-- Remove the default system radio circle -->
+        <item name="android:button">@null</item>
+        <item name="android:drawableStart">@null</item>
+        <!-- Our custom tick appears on the RIGHT side -->
+        <item name="android:drawableEnd">@drawable/rb_selector</item>
+        <item name="android:drawablePadding">0dp</item>
+        <!-- Row gets a subtle blue highlight when selected -->
+        <item name="android:background">@drawable/rb_row_bg_selector</item>
+    </style>
+
+</resources>

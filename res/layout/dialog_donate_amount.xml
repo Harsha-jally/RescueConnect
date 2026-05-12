@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Small dialog for entering donation amount -->
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="20dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Enter amount to donate (₹)"
+        android:textColor="#94A3B8"
+        android:textSize="13sp"
+        android:fontFamily="@font/poppins_medium"
+        android:layout_marginBottom="10dp"/>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        app:boxStrokeColor="#F59E0B"
+        app:boxBackgroundColor="#1E293B">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etDonateAmount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="e.g. 500"
+            android:textColor="#F1F5F9"
+            android:textColorHint="#64748B"
+            android:inputType="numberDecimal"
+            android:fontFamily="@font/poppins_regular"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+</LinearLayout>

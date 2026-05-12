@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    activity_track_volunteer.xml
+    ────────────────────────────────────────────────────────────────────────────
+    Swiggy/Zomato-style live volunteer tracking screen.
+
+    IDs referenced by TrackVolunteerActivity:
+      · R.id.trackStatusText       — top status message (updating live)
+      · R.id.trackVolunteerName    — volunteer name headline in top bar
+      · R.id.volunteerMapFragment  — full-screen SupportMapFragment
+      · R.id.trackEtaText          — ETA chip in bottom sheet       (NEW)
+      · R.id.trackDistanceText     — distance label in bottom sheet  (NEW)
+
+    Extra IDs:
+      · R.id.trackLiveBadge        — pulsing "● LIVE" badge
+      · R.id.trackBottomSheet      — bottom info card overlaid on map
+      · R.id.trackEtaRow           — wrapper for ETA + distance row  (NEW)
+-->
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#0A0E1A"
+    tools:context=".TrackVolunteerActivity">
+
+    <!-- ── Full-screen map — sits behind the top bar and bottom sheet ── -->
+    <fragment
+        android:id="@+id/volunteerMapFragment"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <!-- ── Top status bar (semi-transparent scrim) ─────────────────────── -->
+    <LinearLayout
+        android:id="@+id/trackTopBar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="#CC0A0E1A"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:paddingTop="48dp"
+        android:paddingBottom="16dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <!-- Back arrow + LIVE badge row -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <!-- Back button -->
+            <TextView
+                android:id="@+id/trackBackBtn"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:gravity="center"
+                android:text="←"
+                android:textColor="#F1F5F9"
+                android:textSize="22sp"
+                android:background="@android:color/transparent"/>
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1"/>
+
+            <!-- Pulsing LIVE badge -->
+            <TextView
+                android:id="@+id/trackLiveBadge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#1A4731"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:paddingTop="4dp"
+                android:paddingBottom="4dp"
+                android:text="● LIVE"
+                android:textColor="#4ADE80"
+                android:textSize="11sp"
+                android:letterSpacing="0.12"
+                android:textAllCaps="true"
+                android:fontFamily="@font/poppins_bold"/>
+
+        </LinearLayout>
+
+        <!-- Volunteer name -->
+        <TextView
+            android:id="@+id/trackVolunteerName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="🦸 Volunteer is on the way!"
+            android:textColor="#F0FDF4"
+            android:textSize="19sp"
+            android:fontFamily="@font/poppins_bold"
+            tools:text="🦸 Ravi is on the way!"/>
+
+        <!-- Live status text — updated by TrackVolunteerActivity -->
+        <TextView
+            android:id="@+id/trackStatusText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="🔍 Connecting to volunteer's location…"
+            android:textColor="#86EFAC"
+            android:textSize="13sp"
+            android:fontFamily="@font/poppins_regular"
+            tools:text="📍 Volunteer is on the way — location is live!"/>
+
+    </LinearLayout>
+
+    <!-- ── Bottom sheet — overlaid on the map ──────────────────────────── -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/trackBottomSheet"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="24dp"
+        app:cardBackgroundColor="#0D1F2D"
+        app:cardCornerRadius="24dp"
+        app:cardElevation="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:paddingTop="16dp"
+            android:paddingBottom="20dp">
+
+            <!-- Drag handle -->
+            <View
+                android:layout_width="40dp"
+                android:layout_height="4dp"
+                android:layout_gravity="center_horizontal"
+                android:background="#334155"
+                android:layout_marginBottom="14dp"/>
+
+            <!-- ── ETA + distance row (NEW) ──────────────────────────────── -->
+            <!--
+                Visibility toggled by TrackVolunteerActivity.setEtaVisible().
+                Hidden (GONE) until the first GPS fix arrives so the card
+                doesn't show a blank row while connecting.
+            -->
+            <LinearLayout
+                android:id="@+id/trackEtaRow"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:visibility="gone"
+                tools:visibility="visible">
+
+                <!-- ETA chip — left pill -->
+                <TextView
+                    android:id="@+id/trackEtaText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="#0F2A1A"
+                    android:paddingStart="14dp"
+                    android:paddingEnd="14dp"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    android:text="🕐 Calculating ETA…"
+                    android:textColor="#4ADE80"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/poppins_semibold"
+                    tools:text="🕐 ~6 min away"/>
+
+                <View
+                    android:layout_width="8dp"
+                    android:layout_height="1dp"/>
+
+                <!-- Distance chip — right pill -->
+                <TextView
+                    android:id="@+id/trackDistanceText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="#0D1F2D"
+                    android:paddingStart="14dp"
+                    android:paddingEnd="14dp"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    android:text="📏 — m away"
+                    android:textColor="#94A3B8"
+                    android:textSize="13sp"
+                    android:fontFamily="@font/poppins_regular"
+                    tools:text="📏 3.2 km away"/>
+
+            </LinearLayout>
+
+            <!-- Divider below ETA row -->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#1E293B"
+                android:layout_marginTop="14dp"
+                android:layout_marginBottom="14dp"/>
+
+            <!-- Info row: shield icon + text -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:gravity="center"
+                    android:text="🛡️"
+                    android:textSize="24sp"
+                    android:background="#0B2D1B"
+                    android:layout_marginEnd="14dp"/>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="RescueConnect Verified"
+                        android:textColor="#4ADE80"
+                        android:textSize="12sp"
+                        android:fontFamily="@font/poppins_semibold"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Volunteer location updates every 5 seconds"
+                        android:textColor="#64748B"
+                        android:textSize="11sp"
+                        android:fontFamily="@font/poppins_regular"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!-- Divider -->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#1E293B"
+                android:layout_marginTop="14dp"
+                android:layout_marginBottom="14dp"/>
+
+            <!-- Safety tip -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="💡 Stay where you are so the volunteer can find you easily."
+                android:textColor="#94A3B8"
+                android:textSize="12sp"
+                android:fontFamily="@font/poppins_regular"
+                android:lineSpacingMultiplier="1.4"/>
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

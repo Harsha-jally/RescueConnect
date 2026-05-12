@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  RescueConnect · activity_donations.xml
+  Hub screen: Raise Health Funds  |  Donate to Patients
+-->
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#0A0E1A"
+    android:orientation="vertical">
+
+    <!-- ── Header ── -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_header_gradient_gold"
+        android:orientation="vertical"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:paddingTop="44dp"
+        android:paddingBottom="20dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="💰 Funds &amp; Donations"
+            android:textColor="#FFFFFF"
+            android:textSize="24sp"
+            android:fontFamily="@font/poppins_bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Help someone fight for their life"
+            android:textColor="#CCFFFFFF"
+            android:textSize="12sp"
+            android:fontFamily="@font/poppins_regular"
+            android:layout_marginTop="2dp"/>
+
+    </LinearLayout>
+
+    <!-- ── Scrollable content ── -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="24dp">
+
+            <!-- ── Stat banner ── -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="28dp"
+                app:cardBackgroundColor="#1A0000"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="8dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="20dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="💔 Every Hour in India…"
+                        android:textColor="#FF6B6B"
+                        android:textSize="15sp"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:layout_marginBottom="8dp"/>
+
+                    <TextView
+                        android:id="@+id/tvStatIndia"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="~2,000 people lose their fight against\ntreatable illness — simply due to lack of funds."
+                        android:textColor="#FFAAAA"
+                        android:textSize="13sp"
+                        android:fontFamily="@font/poppins_regular"
+                        android:lineSpacingExtra="4dp"/>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#3D1515"
+                        android:layout_marginTop="12dp"
+                        android:layout_marginBottom="12dp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="🌍 Worldwide Every Hour…"
+                        android:textColor="#FF6B6B"
+                        android:textSize="15sp"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:layout_marginBottom="8dp"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="~4,200 lives are lost to preventable diseases\nbecause families cannot afford treatment."
+                        android:textColor="#FFAAAA"
+                        android:textSize="13sp"
+                        android:fontFamily="@font/poppins_regular"
+                        android:lineSpacingExtra="4dp"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Your contribution can change this. Every rupee matters."
+                        android:textColor="#F59E0B"
+                        android:textSize="12sp"
+                        android:fontFamily="@font/poppins_medium"
+                        android:layout_marginTop="12dp"
+                        android:gravity="center"/>
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- ── Section label ── -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="What would you like to do?"
+                android:textColor="#64748B"
+                android:textSize="12sp"
+                android:letterSpacing="0.10"
+                android:textAllCaps="true"
+                android:fontFamily="@font/poppins_medium"
+                android:layout_marginBottom="16dp"/>
+
+            <!-- ── Raise Funds Card ── -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardRaiseFunds"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                app:cardBackgroundColor="#111827"
+                app:cardCornerRadius="24dp"
+                app:cardElevation="12dp"
+                android:foreground="?attr/selectableItemBackground"
+                android:clickable="true"
+                android:focusable="true">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="24dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="🏥"
+                        android:textSize="40sp"
+                        android:layout_marginBottom="12dp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Raise Health Funds"
+                        android:textColor="#F1F5F9"
+                        android:textSize="20sp"
+                        android:fontFamily="@font/poppins_bold"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Need money for a patient's treatment? Submit your request with hospital documents. Verified campaigns go live for donations."
+                        android:textColor="#94A3B8"
+                        android:textSize="13sp"
+                        android:fontFamily="@font/poppins_regular"
+                        android:lineSpacingExtra="3dp"
+                        android:layout_marginTop="6dp"
+                        android:layout_marginBottom="16dp"/>
+
+                    <Button
+                        android:id="@+id/btnRaiseFunds"
+                        android:layout_width="match_parent"
+                        android:layout_height="52dp"
+                        android:background="@drawable/bg_role_btn_user"
+                        android:text="📋  Submit Fund Request"
+                        android:textColor="#FFFFFF"
+                        android:textSize="14sp"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:stateListAnimator="@null"/>
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- ── Donate Card ── -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardDonate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="24dp"
+                app:cardBackgroundColor="#111827"
+                app:cardCornerRadius="24dp"
+                app:cardElevation="12dp"
+                android:foreground="?attr/selectableItemBackground"
+                android:clickable="true"
+                android:focusable="true">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="24dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="❤️"
+                        android:textSize="40sp"
+                        android:layout_marginBottom="12dp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Donate to Patients"
+                        android:textColor="#F1F5F9"
+                        android:textSize="20sp"
+                        android:fontFamily="@font/poppins_bold"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Browse verified fund campaigns and directly donate via UPI. See real-time progress of how much has been raised."
+                        android:textColor="#94A3B8"
+                        android:textSize="13sp"
+                        android:fontFamily="@font/poppins_regular"
+                        android:lineSpacingExtra="3dp"
+                        android:layout_marginTop="6dp"
+                        android:layout_marginBottom="16dp"/>
+
+                    <Button
+                        android:id="@+id/btnDonate"
+                        android:layout_width="match_parent"
+                        android:layout_height="52dp"
+                        android:background="@drawable/bg_role_btn_donate"
+                        android:text="💛  Browse Campaigns"
+                        android:textColor="#1A0A00"
+                        android:textSize="14sp"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:stateListAnimator="@null"/>
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

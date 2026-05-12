@@ -1,0 +1,36 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <style name="Base.Theme.RescueConnect" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">#FF3B5C</item>
+        <item name="colorPrimaryVariant">#C2185B</item>
+        <item name="colorOnPrimary">#FFFFFF</item>
+        <item name="colorSurface">#111827</item>
+        <item name="colorOnSurface">#F1F5F9</item>
+        <item name="android:windowBackground">@color/rc_bg</item>
+        <item name="android:statusBarColor">@color/rc_bg</item>
+        <item name="android:navigationBarColor">@color/rc_bg</item>
+    </style>
+
+    <style name="RC.TextInputLayout" parent="Widget.Material3.TextInputLayout.OutlinedBox">
+        <item name="boxStrokeColor">#FF3B5C</item>
+        <item name="hintTextColor">#64748B</item>
+        <item name="android:textColorHint">#64748B</item>
+        <item name="boxBackgroundColor">#0A0E1A</item>
+        <item name="android:textColor">#F1F5F9</item>
+    </style>
+
+    <style name="RC.TextInputLayout.Cyan" parent="RC.TextInputLayout">
+        <item name="boxStrokeColor">#00D4FF</item>
+    </style>
+
+    <style name="RC.TextInputLayout.Green" parent="RC.TextInputLayout">
+        <item name="boxStrokeColor">#00E676</item>
+    </style>
+
+    <style name="Theme.RescueConnect" parent="Base.Theme.RescueConnect" />
+
+    <style name="RC.RoundedCorner16" parent="ShapeAppearance.Material3.Corner.Medium">
+        <item name="cornerSize">16dp</item>
+    </style>
+
+</resources>
